@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    submission/qplust.pro \
+    submission \
     tests
