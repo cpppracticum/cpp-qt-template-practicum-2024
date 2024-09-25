@@ -91,12 +91,8 @@ void TestYourApp::initTestCase()
 void TestYourApp::TestMelborpButton_1()
 {
 
-    std::string original_text = "This is my awesome string!";
-    std::string reversed_text;
-    std::reverse_copy(original_text.begin(), original_text.end(), reversed_text.begin());
-
-    QString q_original_text = original_text.c_str();
-    QString q_reversed_text = reversed_text.c_str();
+    QString q_original_text = "This is my awesome string!";
+    QString q_reversed_text = "!gnirts emosewa ym si sihT";
 
     textView->setText(q_original_text);
     QVERIFY2(textView->text() == q_original_text, "Выведенный текст не совпадает с исходным");
