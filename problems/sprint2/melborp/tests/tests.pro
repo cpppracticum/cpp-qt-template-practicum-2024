@@ -1,3 +1,7 @@
+########
+MOCK_LIB=../../../../mocks_library
+########
+
 QT += testlib
 QT += gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
