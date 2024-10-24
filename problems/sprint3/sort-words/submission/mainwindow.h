@@ -19,9 +19,9 @@ public:
 
 private slots:
 
-    void on_rb_greater_clicked();
+    void on_rb_desc_clicked();
 
-    void on_rb_less_clicked();
+    void on_rb_asc_clicked();
 
     void on_cb_case_clicked();
 
