@@ -14,12 +14,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_rb_greater_clicked()
+void MainWindow::on_rb_asc_clicked()
 {
     // Ваш код.
 }
 
-void MainWindow::on_rb_less_clicked()
+void MainWindow::on_rb_desc_clicked()
 {
     // Ваш код.
 }

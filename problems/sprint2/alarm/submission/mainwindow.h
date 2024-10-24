@@ -2,9 +2,9 @@
 
 #include <QMainWindow>
 #include <prac/QTimer>
-#include <prac/QMediaPlayer>
+#include <QMediaPlayer>
 #include <prac/QTime>
-#include <prac/QDateTime>
+#include <QDateTime>
 #include <QAudioOutput>
 
 QT_BEGIN_NAMESPACE

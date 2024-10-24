@@ -1,18 +1,10 @@
-########
-MOCK_LIB=../../../../mocks_library
-########
-
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
-isEmpty(MOCK_LIB) {
-    MOCK_LIB=$$(PRACTICUM_MOCK_LIBRARY)
-}
-
-INCLUDEPATH += $$MOCK_LIB
+INCLUDEPATH += ../prac_moc
 
 SOURCES += \
     main.cpp \

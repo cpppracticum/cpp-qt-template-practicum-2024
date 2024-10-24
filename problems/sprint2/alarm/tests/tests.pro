@@ -1,7 +1,3 @@
-########
-MOCK_LIB=../../../../mocks_library
-########
-
 QT += testlib
 QT += gui
 QT += multimedia
@@ -14,22 +10,20 @@ DEFINES += "PRAC_TESTS"
 
 SUBMISSION_PATH = ../submission
 
-isEmpty(MOCK_LIB) {
-    MOCK_LIB=$$(PRACTICUM_MOCK_LIBRARY)
-}
-
 INCLUDEPATH += $$SUBMISSION_PATH
-INCLUDEPATH += $$MOCK_LIB
+
+INCLUDEPATH += ../prac_moc
 
 TEMPLATE = app
 
 SOURCES +=  tests.cpp \
-    $$SUBMISSION_PATH/mainwindow.cpp
+    $$SUBMISSION_PATH/mainwindow.cpp \
+    ../prac_moc/prac/QTime.cpp
 
 HEADERS +=  \
     $$SUBMISSION_PATH/mainwindow.h \
-    $$MOCK_LIB/prac/QTimer \
-    $$MOCK_LIB/prac/QTime
+    ../prac_moc/prac/QTimer \
+    ../prac_moc/prac/QTime
 
 FORMS += \
     $$SUBMISSION_PATH/mainwindow.ui

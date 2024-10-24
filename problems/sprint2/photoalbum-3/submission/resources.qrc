@@ -1,2 +1,17 @@
 <RCC>
+    <qresource prefix="/cats">
+        <file>images/cat1.jpg</file>
+        <file>images/cat2.jpg</file>
+        <file>images/cat3.jpg</file>
+        <file>images/cat4.jpg</file>
+        <file>images/cat5.jpg</file>
+        <file>images/cat6.jpg</file>
+        <file>images/cat7.jpg</file>
+        <file>images/cat8.jpg</file>
+        <file>images/cat9.jpg</file>
+    </qresource>
+    <qresource prefix="/buttons">
+        <file>images/chevron_l.png</file>
+        <file>images/chevron_r.png</file>
+    </qresource>
 </RCC>

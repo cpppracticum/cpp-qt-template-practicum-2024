@@ -1,7 +1,3 @@
-########
-MOCK_LIB=../../../../mocks_library
-########
-
 QT += testlib
 QT += gui
 QT += multimedia
@@ -10,16 +6,13 @@ CONFIG += qt warn_on depend_includepath testcase
 
 CONFIG += c++17
 
-isEmpty(MOCK_LIB) {
-    MOCK_LIB=$$(PRACTICUM_MOCK_LIBRARY)
-}
-
 DEFINES += PRAC_TESTS
 
 SUBMISSION_PATH = ../submission
 
 INCLUDEPATH += $$SUBMISSION_PATH
-INCLUDEPATH += $$MOCK_LIB
+
+INCLUDEPATH += ../prac_mocks
 
 TEMPLATE = app
 
@@ -29,7 +22,7 @@ SOURCES += \
 
 HEADERS +=  \
     $$SUBMISSION_PATH/winterwindow.h \
-    $$MOCK_LIB/prac/QPainter
+    ../prac_mocks/prac/QPainter
 
 FORMS += \
     $$SUBMISSION_PATH/winterwindow.ui

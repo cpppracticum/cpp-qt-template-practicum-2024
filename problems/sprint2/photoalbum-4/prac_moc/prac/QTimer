@@ -1,0 +1,60 @@
+#include <QTimer>
+#include <QObject>
+#include <QWidget>
+#include <iostream>
+
+
+#ifndef QTIMERP
+#define QTIMERP
+
+namespace prac {
+
+#ifndef PRAC_TESTS
+
+using QTimer = ::QTimer;
+
+#else
+
+class QTimer : public ::QObject{
+
+    Q_OBJECT
+
+    bool is_on_ = false;
+    int state_ = 0;
+
+public:
+    QTimer()=default;
+
+    ~QTimer() override =default;
+    bool isOn() const {
+        return is_on_;
+    }
+
+    int getState() const {
+        return state_;
+    }
+
+
+public slots:
+    void start(int msec){
+        std::cout << "Start timer with " << msec << " ms" << std::endl;
+        is_on_ = true;
+        state_ = msec;
+    }
+
+    void stop(){
+        is_on_ = false;
+        state_ = 0;
+    }
+
+signals:
+    void timeout();
+
+};
+
+
+#endif
+
+}  // namespace prac
+
+#endif

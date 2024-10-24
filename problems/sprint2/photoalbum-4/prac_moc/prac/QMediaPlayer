@@ -1,0 +1,10 @@
+#include <QMediaPlayer>
+
+namespace prac {
+
+class QMediaPlayer: public ::QMediaPlayer {
+public:
+    using ::QMediaPlayer::QMediaPlayer;
+};
+
+}

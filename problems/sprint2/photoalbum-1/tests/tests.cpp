@@ -93,7 +93,7 @@ void TestYourApp::init()
 
     QVERIFY2(lbl_img, "Не найден элемент lbl_img класса QLabel");
 
-    pixmap = new QPixmap(":/cats/images/cat1.jpg");
+    pixmap = new QPixmap(":/cats/images/cat1.png");
     QVERIFY2(!pixmap->isNull(), "Не удалось загрузить изображение");
 
 }

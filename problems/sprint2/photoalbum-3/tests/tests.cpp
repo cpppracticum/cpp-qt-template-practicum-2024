@@ -86,10 +86,6 @@ private:
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
-
     QDir im_dir(dir_path);
     image_dir = im_dir; // Ask me what is going on, I won't tell you the answer...
     images = im_dir.entryList();
@@ -99,6 +95,9 @@ void TestYourApp::initTestCase()
 
 void TestYourApp::init()
 {
+    int argc = 0;
+    static const QApplication static_app(argc, {});
+
     window = new MainWindow();
     QVERIFY2(window != nullptr, "Окно приложения не создано");
     window->show();
@@ -113,7 +112,6 @@ void TestYourApp::init()
     window->SetFolder(dir_path);
 
     lbl_new_ = FindElementByName<QLabel>(window, "lbl_new_");
-//    QVERIFY2(lbl_new_, "Не найден элемент lbl_img класса QLabel");
 }
 
 
@@ -194,11 +192,9 @@ void TestYourApp::TestGoRight(){
 
 }
 
-
 void TestYourApp::cleanupTestCase()
 {
 
-    delete app;
 }
 
 void TestYourApp::cleanup()

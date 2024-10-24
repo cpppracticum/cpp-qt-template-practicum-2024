@@ -1,0 +1,10 @@
+#include <QFileDialog>
+
+namespace prac {
+
+class QFileDialog: public ::QFileDialog {
+public:
+    using ::QFileDialog::QFileDialog;
+};
+
+}

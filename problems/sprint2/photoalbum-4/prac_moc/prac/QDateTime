@@ -1,0 +1,10 @@
+#include <QDateTime>
+
+namespace prac {
+
+class QDateTime: public ::QDateTime {
+public:
+    using ::QDateTime::QDateTime;
+};
+
+}

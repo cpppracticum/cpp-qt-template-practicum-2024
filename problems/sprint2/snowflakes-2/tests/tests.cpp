@@ -16,80 +16,6 @@
 using namespace std;
 
 
-class LineSet {
-    template<class T>
-    size_t CellsSum(const T& cells) const {
-        size_t acc = 0;
-        for (const auto& c : cells) {
-            if (!c.has_value()) {
-                continue;
-            }
-            auto iter = storage_.find(*c);
-            if (iter == storage_.end()) {
-                continue;
-            }
-            acc += iter->second.size();
-        }
-        return acc;
-    }
-public:
-    LineSet(double eps, double step) : eps_(eps), step_(step) {}
-
-    template<class T>
-    void Set(T begin, T end) {
-        for (;begin!=end; ++begin) {
-            AddLine(*begin);
-        }
-    }
-
-    using Cell = std::pair<int,int>;
-    void AddLine(prac::Line l) {
-        auto cells_to_add_start = GetCellsForPoint(l.start);
-        auto cells_to_add_stop = GetCellsForPoint(l.start);
-
-        auto cells_to_add = CellsSum(cells_to_add_start) < CellsSum(cells_to_add_stop) ? cells_to_add_start : cells_to_add_stop;
-
-        for (const auto& cell : cells_to_add) {
-            if (!cell.has_value()) {
-                continue;
-            }
-            storage_[*cell].push_back(l);
-        }
-    }
-
-    bool HasLine(prac::Line l) const {
-        return HasLine(l, l.start) || HasLine(l, l.stop);
-    }
-
-    bool HasLine(prac::Line l, QPointF loockup_point) const {
-        auto iter = storage_.find(GetCell(loockup_point));
-        if (iter == storage_.end()) {
-            return false;
-        }
-        const auto& vec = iter->second;
-        return std::find(vec.begin(), vec.end(), l) != vec.end();
-    }
-
-    Cell GetCell(QPointF p) const {
-        return {int(p.x() / step_), int(p.y() / step_)};
-    }
-
-    std::array<std::optional<Cell>, 4> GetCellsForPoint(QPointF p) const {
-        std::array<Cell, 4> cells = {GetCell(p + QPointF(-eps_, -eps_)), GetCell(p + QPointF(-eps_, eps_)), GetCell(p + QPointF(eps_, -eps_)), GetCell(p + QPointF(eps_, eps_))};
-        std::sort(cells.begin(), cells.end());
-        auto real_end = std::unique(cells.begin(), cells.end());
-        std::array<std::optional<Cell>, 4> result;
-        std::copy(cells.begin(), real_end, result.begin());
-        return result;
-    }
-
-private:
-    double eps_;
-    double step_;
-    std::map<Cell, std::vector<prac::Line>> storage_;
-};
-
-
 template <typename T>
 void getChild(T*& child, QObject* parent, const QString& object_name, const QString& type_name) {
     child = parent->findChild<T*>(object_name);
@@ -180,7 +106,7 @@ QPointF RotatePoint(const QPointF& point, double angle)
 }
 
 
-bool findSameLine(const std::vector<prac::Line>& lines, prac::Line line)
+bool findSameLine(std::vector<prac::Line> lines, prac::Line line)
 {
     for (const auto& candidate : lines)
     {
@@ -243,14 +169,10 @@ void TestYourApp::ValidateSnowflake()
     checkPens(prac::QPainter::pens, line_width);
 
     auto expected_lines = getRecursiveSnowflake(center, line_length, rotation, line_width, factor, depth);
-
-    LineSet set(1e-5, 0.1);
-    set.Set(prac::QPainter::lines.begin(), prac::QPainter::lines.end());
-
     QVERIFY2(prac::QPainter::lines.size() == expected_lines.size(), "Количество линий, которые были нарисовано, не совпадает с ожидаемым");
     for (const auto& line: expected_lines)
     {
-        bool line_is_found = set.HasLine(line);
+        bool line_is_found = findSameLine(prac::QPainter::lines, line);
         QVERIFY2(line_is_found, "Как минимум один из ожидаемых лучей не был нарисован");
     }
 }

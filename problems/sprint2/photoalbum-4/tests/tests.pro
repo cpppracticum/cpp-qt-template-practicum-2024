@@ -1,15 +1,7 @@
-########
-MOCK_LIB=../../../../mocks_library
-########
-
 QT += testlib
 QT += gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 CONFIG += qt warn_on depend_includepath testcase
-
-isEmpty(MOCK_LIB) {
-    MOCK_LIB=$$(PRACTICUM_MOCK_LIBRARY)
-}
 
 CONFIG += c++17
 
@@ -18,7 +10,8 @@ DEFINES += "PRAC_TESTS"
 SUBMISSION_PATH = ../submission
 
 INCLUDEPATH += $$SUBMISSION_PATH
-INCLUDEPATH += $$MOCK_LIB
+
+INCLUDEPATH += ../prac_moc
 
 TEMPLATE = app
 
@@ -27,7 +20,7 @@ SOURCES +=  tests.cpp \
 
 HEADERS +=  \
     $$SUBMISSION_PATH/mainwindow.h\
-    $$MOCK_LIB/prac/QTimer
+    ../prac_moc/prac/QTimer
 
 FORMS += \
     $$SUBMISSION_PATH/mainwindow.ui

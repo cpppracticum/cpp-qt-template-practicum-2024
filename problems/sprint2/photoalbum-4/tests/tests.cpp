@@ -123,17 +123,12 @@ private:
     QString dir_path = ":/cats/images/";
     QDir image_dir;
     QStringList images;
-    QGuiApplication *app;
 };
 
 
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
-
     QDir im_dir(dir_path);
     image_dir = im_dir; // Ask me what is going on, I won't tell you the answer...
     images = im_dir.entryList();
@@ -143,6 +138,9 @@ void TestYourApp::initTestCase()
 
 void TestYourApp::init()
 {
+    int argc = 0;
+    static const QApplication static_app(argc, {});
+
     window = new MainWindow();
     QVERIFY2(window != nullptr, "Окно приложения не создано");
     window->show();
@@ -203,8 +201,6 @@ void TestYourApp::TestClick(){
 
 void TestYourApp::cleanupTestCase()
 {
-
-    delete app;
 }
 
 void TestYourApp::cleanup()

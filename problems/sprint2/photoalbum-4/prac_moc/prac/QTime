@@ -1,0 +1,10 @@
+#include <QTime>
+
+namespace prac {
+
+class QTime: public ::QTime {
+public:
+    using ::QTime::QTime;
+};
+
+}
