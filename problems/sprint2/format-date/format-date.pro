@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    submission/format-date.pro \
+    submission/submission.pro \
     tests

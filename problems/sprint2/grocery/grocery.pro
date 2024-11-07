@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    submission/grocery.pro \
+    submission/submission.pro \
     tests

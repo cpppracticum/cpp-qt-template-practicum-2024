@@ -1,6 +1,4 @@
 #include <QtTest>
-
-#include <QtTest>
 #include <QCoreApplication>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
@@ -111,16 +109,9 @@ private slots:
 
 private:
     MainWindow* window;
-    QPushButton* btn_left;
-    QPushButton* btn_right;
-    QLabel* lbl_new_;
-    QString dir_path = ":/cats/images/";
-    QDir image_dir;
-    QStringList images;
     QGuiApplication *app;
+    prac::QTimer* timer;
 };
-
-
 
 void TestYourApp::initTestCase()
 {
@@ -136,31 +127,30 @@ void TestYourApp::init()
     QVERIFY2(window != nullptr, "Окно приложения не создано");
     window->show();
     QVERIFY2(window->isVisible(), "Окно приложения не активируется");
+    
+    timer = prac::QTimer::getLastCreated();
+    QVERIFY2(timer, "Не найден таймер");
 }
 
 void TestYourApp::TestMenu0(){
     auto childs = window->children();
-    auto action = findElementByText<QAction>(window, "Включить будильник", "QAction");
-    action->trigger();
-
-    QVERIFY(window->GetTimer().isOn() == true);
-    QVERIFY(window->GetTimer().getInterval() > 0);
+    
+    QVERIFY(timer->isOn() == true);
+    QVERIFY(timer->getInterval() > 0);
 }
 
 void TestYourApp::TestQTime(){
     auto childs = window->children();
-    auto action = findElementByText<QAction>(window, "Включить будильник", "QAction");
-    action->trigger();
 
-    QVERIFY(window->GetTimer().isOn() == true);
-    QVERIFY(window->GetTimer().getInterval() == 1000 - current_time.msec());
+    QVERIFY(timer->isOn() == true);
+    QVERIFY(timer->getInterval() == 1000 - current_time.msec());
 
     prac::QTime::currentTime() = current_time2;
 
-    window->GetTimer().emitTimeout();
+    timer->emitTimeout();
 
-    QVERIFY(window->GetTimer().isOn() == true);
-    QVERIFY(window->GetTimer().getInterval() == 1000 - current_time2.msec());
+    QVERIFY(timer->isOn() == true);
+    QVERIFY(timer->getInterval() == 1000 - current_time2.msec());
 }
 
 void TestYourApp::cleanupTestCase()

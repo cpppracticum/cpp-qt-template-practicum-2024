@@ -1,6 +1,4 @@
 #include <QtTest>
-
-#include <QtTest>
 #include <QCoreApplication>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>

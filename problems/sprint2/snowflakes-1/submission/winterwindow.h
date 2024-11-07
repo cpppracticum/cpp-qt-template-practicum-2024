@@ -70,7 +70,7 @@ public:
     }
 
     QString GetDescription() const {
-        return QString("Размер %1\\nТолщина линии %2\\nПоворот %3")
+        return QString("Размер %1\nТолщина линии %2\nПоворот %3")
             .arg(params_.size)
             .arg(params_.line_width)
             .arg(params_.rotation);

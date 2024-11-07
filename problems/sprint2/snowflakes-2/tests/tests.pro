@@ -11,7 +11,7 @@ CONFIG += qt warn_on depend_includepath testcase
 CONFIG += c++17
 
 isEmpty(MOCK_LIB) {
-    MOCK_LIB=$$(PRACTICUM_MOCK_LIBRARY)
+    MOCK_LIB=/tmp/practicum-qt-mocks
 }
 
 DEFINES += PRAC_TESTS
