@@ -13,7 +13,7 @@ CONFIG += c++20
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 isEmpty(MOCK_LIB) {
-    MOCK_LIB=$$(PRACTICUM_MOCK_LIBRARY)
+    MOCK_LIB=/tmp/practicum-qt-mocks
 }
 
 INCLUDEPATH += $$MOCK_LIB

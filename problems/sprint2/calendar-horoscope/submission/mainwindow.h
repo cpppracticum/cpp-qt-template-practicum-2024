@@ -8,13 +8,13 @@ namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 enum class Calendar {
-    kEast,
-    kTibet,
-    kZoroastr
+    kEastern,
+    kTibetan,
+    kZoroastrian
 };
 
 enum class Horoscope {
-    kZodiak,
+    kZodiac,
     kDruid
 };
 
@@ -30,7 +30,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    Calendar calendar_ = Calendar::kEast;
-    Horoscope horoscope_ = Horoscope::kZodiak;
+    Calendar calendar_ = Calendar::kEastern;
+    Horoscope horoscope_ = Horoscope::kZodiac;
 };
 #endif // MAINWINDOW_H

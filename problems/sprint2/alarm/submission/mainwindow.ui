@@ -215,17 +215,6 @@
    </widget>
    <addaction name="menu"/>
   </widget>
-  <action name="action_on_off">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Включить будильник</string>
-   </property>
-  </action>
   <action name="action_load_file">
    <property name="text">
     <string>Выбрать мелодию</string>
@@ -237,11 +226,6 @@
    </property>
    <property name="text">
     <string>Выход</string>
-   </property>
-  </action>
-  <action name="action">
-   <property name="text">
-    <string>ываыва</string>
    </property>
   </action>
  </widget>

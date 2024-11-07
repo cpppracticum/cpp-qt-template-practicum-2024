@@ -17,25 +17,21 @@ class QTimer : public ::QObject{
 
     Q_OBJECT
 
-    bool is_on_ = false;
-    int state_ = 0;
-
-    bool single_shot_ = false;
-    int interval_ = 0;
-
 public:
-    QTimer() = default;
-    QTimer(QMainWindow* w) {
-        (void)w;
+    QTimer() {
+        last_created_ = this;
     }
+
+    QTimer(QObject* w) : QObject(w){
+        last_created_ = this;
+    }
+    
+    QTimer(const QTimer&) = delete;
 
     ~QTimer() override =default;
+
     bool isOn() const {
         return is_on_;
-    }
-
-    int getState() const {
-        return state_;
     }
 
     int getInterval() const {
@@ -46,11 +42,14 @@ public:
         emit timeout();
     }
 
+    static QTimer* getLastCreated() {
+        return last_created_;
+    }
 
 public slots:
     void start(int msec) {
         is_on_ = true;
-        state_ = msec;
+        interval_ = msec;
     }
 
     void start() {
@@ -67,12 +66,17 @@ public slots:
 
     void stop() {
         is_on_ = false;
-        state_ = 0;
     }
 
 signals:
     void timeout();
 
+private:
+    inline static QTimer* last_created_ = nullptr;
+
+    bool is_on_ = false;
+    bool single_shot_ = false;
+    int interval_ = 0;
 };
 
 

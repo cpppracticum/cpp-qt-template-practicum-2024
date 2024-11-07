@@ -14,7 +14,7 @@ SUBMISSION_PATH = ../submission
 DEFINES += "PRAC_TESTS"
 
 isEmpty(MOCK_LIB) {
-    MOCK_LIB=$$(PRACTICUM_MOCK_LIBRARY)
+    MOCK_LIB=/tmp/practicum-qt-mocks
 }
 
 INCLUDEPATH += $$SUBMISSION_PATH
