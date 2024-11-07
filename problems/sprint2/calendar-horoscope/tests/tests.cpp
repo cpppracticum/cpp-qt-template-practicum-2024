@@ -93,13 +93,13 @@ private:
     QLineEdit* le_year;
 
     QGroupBox* gb_calendar;
-    QRadioButton* rb_eastern;
-    QRadioButton* rb_tibetan;
+    QRadioButton* rb_east;
+    QRadioButton* rb_tibet;
 
-    QRadioButton* rb_zoroastrian;
+    QRadioButton* rb_zoroast;
 
     QGroupBox* gb_horoscope;
-    QRadioButton* rb_zodiac;
+    QRadioButton* rb_zodiak;
 
     QRadioButton* rb_druid;
     QCheckBox* cb_is_date;
@@ -130,11 +130,11 @@ void TestYourApp::init()
     gb_calendar = getChild<QGroupBox>(window, "gb_calendar", "QGroupBox");
     gb_horoscope = getChild<QGroupBox>(window, "gb_horoscope", "QGroupBox");
 
-    rb_eastern = getChild<QRadioButton>(window, "rb_eastern", "QRadioButton");
-    rb_tibetan = getChild<QRadioButton>(window, "rb_tibetan", "QRadioButton");
-    rb_zoroastrian = getChild<QRadioButton>(window, "rb_zoroastrian", "QRadioButton");
+    rb_east = getChild<QRadioButton>(window, "rb_east", "QRadioButton");
+    rb_tibet = getChild<QRadioButton>(window, "rb_tibet", "QRadioButton");
+    rb_zoroast = getChild<QRadioButton>(window, "rb_zoroast", "QRadioButton");
 
-    rb_zodiac = getChild<QRadioButton>(window, "rb_zodiac", "QRadioButton");
+    rb_zodiak = getChild<QRadioButton>(window, "rb_zodiak", "QRadioButton");
     rb_druid = getChild<QRadioButton>(window, "rb_druid", "QRadioButton");
 
     le_year = getChild<QLineEdit>(window, "le_year", "QLineEdit");
@@ -161,10 +161,10 @@ void TestYourApp::checkCalendar()
     }
 
     int year = le_year->text().toInt();
-    if (rb_tibetan->isChecked() or rb_zoroastrian->isChecked())
+    if (rb_tibet->isChecked() or rb_zoroast->isChecked())
     {
 
-        QString animal = rb_tibetan->isChecked()
+        QString animal = rb_tibet->isChecked()
             ? GetAnimalForTibetanCalendar(year)
             : GetAnimalForZoroastrianCalendar(year);
 
@@ -203,7 +203,7 @@ void TestYourApp::checkHoroscope()
     int month = cb_month->currentIndex();
     int year = le_year->text().toInt();
 
-    if (rb_zodiac->isChecked())
+    if (rb_zodiak->isChecked())
     {
 
         QString expected_symbol = GetZodiac(day, month, year);
@@ -243,15 +243,15 @@ void TestYourApp::TestCalendar()
 {
 
     le_year->setText("2000");
-    mouseClick(rb_eastern);
+    mouseClick(rb_east);
     checkCalendar();
 
     le_year->setText("2024");
-    mouseClick(rb_tibetan);
+    mouseClick(rb_tibet);
     checkCalendar();
 
     le_year->setText("1986");
-    mouseClick(rb_zoroastrian);
+    mouseClick(rb_zoroast);
     checkCalendar();
 }
 
@@ -279,7 +279,7 @@ void TestYourApp::TestHoroscope()
         QVERIFY2(lbl_horoscope->text() == "Такой даты не существует",
                  "При вводе несуществующей даты надпись lbl_horoscope должна быть \"Такой даты не существует\"");
     };
-    mouseClick(rb_zodiac);
+    mouseClick(rb_zodiak);
     checkDate(12, 6, 1986);
     checkDate(15, 3, 2015);
     checkDate(3, 12, 2076);
@@ -289,7 +289,7 @@ void TestYourApp::TestHoroscope()
     checkDate(8, 12, 2007);
     checkDate(25, 02, 1976);
 
-    mouseClick(rb_zodiac);
+    mouseClick(rb_zodiak);
     checkNonExistingDate(29, 2, 2001);
     checkNonExistingDate(31, 6, 2012);
 

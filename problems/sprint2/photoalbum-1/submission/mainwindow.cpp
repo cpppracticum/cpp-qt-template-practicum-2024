@@ -36,9 +36,9 @@ void MainWindow::FitImage()
 
     // Напишите этот метод.
     // 1. Вызовите ResizeImgToFit.
-    // 2. Поместите изображение в lbl_pixmap.
-    // 3. Измените размер lbl_pixmap.
-    // 4. Переместите lbl_pixmap, пользуясь формулами из условия.
+    // 2. Поместите изображение в lbl_img.
+    // 3. Измените размер lbl_img.
+    // 4. Переместите lbl_img, пользуясь формулами из условия.
 }
 
 void MainWindow::resizeEvent(QResizeEvent*)

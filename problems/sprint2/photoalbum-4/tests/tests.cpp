@@ -1,6 +1,4 @@
 #include <QtTest>
-
-#include <QtTest>
 #include <QCoreApplication>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
@@ -119,10 +117,10 @@ private:
     MainWindow* window;
     QPushButton* btn_left;
     QPushButton* btn_right;
-    QLabel* lbl_new_;
     QString dir_path = ":/cats/images/";
     QDir image_dir;
     QStringList images;
+    const prac::QTimer* timer;
 };
 
 
@@ -152,10 +150,10 @@ void TestYourApp::init()
     btn_right = FindElementByName<QPushButton>(window, "btn_right");
     QVERIFY2(btn_right, "Не найден элемент btn_right класса QPushButton");
 
+    timer = prac::QTimer::getLastCreated();
+    QVERIFY2(timer, "Не найден таймер");
+
     window->SetFolder(dir_path);
-
-    lbl_new_ = FindElementByName<QLabel>(window, "lbl_new_");
-
 }
 
 void TestYourApp::TestMenu0(){
@@ -163,7 +161,7 @@ void TestYourApp::TestMenu0(){
     auto action = findElementByText<QAction>(window, "Отключить", "QAction");
     action->trigger();
 
-    QVERIFY(window->getTimer().getState() == 0);
+    QVERIFY(timer->getState() == 0);
 }
 
 void TestYourApp::TestMenu1(){
@@ -171,7 +169,7 @@ void TestYourApp::TestMenu1(){
     auto action = findElementByText<QAction>(window, "1 секунда", "QAction");
     action->trigger();
 
-    QVERIFY(window->getTimer().getState() == 1000);
+    QVERIFY(timer->getState() == 1000);
 }
 
 void TestYourApp::TestMenu5(){
@@ -179,7 +177,7 @@ void TestYourApp::TestMenu5(){
     auto action = findElementByText<QAction>(window, "5 секунд", "QAction");
     action->trigger();
 
-    QVERIFY(window->getTimer().getState() == 5000);
+    QVERIFY(timer->getState() == 5000);
 }
 
 void TestYourApp::TestMenu10(){
@@ -187,7 +185,7 @@ void TestYourApp::TestMenu10(){
     auto action = findElementByText<QAction>(window, "10 секунд", "QAction");
     action->trigger();
 
-    QVERIFY(window->getTimer().getState() == 10000);
+    QVERIFY(timer->getState() == 10000);
 }
 
 void TestYourApp::TestClick(){
