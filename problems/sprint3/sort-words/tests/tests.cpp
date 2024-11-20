@@ -61,14 +61,11 @@ private slots:
 private:
     MainWindow* window;
     QLineEdit *le_sorted, *le_unsorted;
-    QApplication *app;
 };
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 
     window = new MainWindow();
 
@@ -96,9 +93,8 @@ void TestYourApp::TestSort()
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

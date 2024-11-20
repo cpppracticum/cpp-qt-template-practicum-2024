@@ -98,7 +98,6 @@ public:
 
 private slots:
     void initTestCase();
-    void cleanupTestCase();
     void init();
     void cleanup();
 
@@ -137,9 +136,6 @@ void TestYourApp::initTestCase()
 
 void TestYourApp::init()
 {
-    int argc = 0;
-    static const QApplication static_app(argc, {});
-
     window = new MainWindow();
     QVERIFY2(window != nullptr, "Окно приложения не создано");
     window->show();
@@ -198,15 +194,11 @@ void TestYourApp::TestClick(){
     }
 }
 
-void TestYourApp::cleanupTestCase()
-{
-}
-
 void TestYourApp::cleanup()
 {
     delete window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

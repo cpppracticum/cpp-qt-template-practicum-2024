@@ -38,7 +38,6 @@ private:
     void setAction(int button_index, std::function<void()> action);
     inline void clickButton(int button_index);
 
-    QGuiApplication *app;
     MainWindow* window;
     std::vector<QPushButton*> pb_buttons;
 
@@ -49,9 +48,7 @@ private:
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 }
 
 #include <iostream>
@@ -106,7 +103,6 @@ void TestYourApp::TestActions()
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
 void TestYourApp::cleanup()
@@ -114,6 +110,6 @@ void TestYourApp::cleanup()
     delete window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

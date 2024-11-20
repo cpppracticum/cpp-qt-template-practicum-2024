@@ -64,14 +64,11 @@ private slots:
 private:
     MyWindowWithImage* window;
     QLabel* lbl_pixmap;
-    QApplication *app;
 };
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 }
 
 void TestYourApp::init()
@@ -103,7 +100,6 @@ void TestYourApp::TestDefault()
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
 void TestYourApp::cleanup()
@@ -111,6 +107,6 @@ void TestYourApp::cleanup()
     delete window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

@@ -109,15 +109,12 @@ private slots:
 
 private:
     MainWindow* window;
-    QGuiApplication *app;
     prac::QTimer* timer;
 };
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
     prac::QTime::currentTime() = current_time;
 }
 
@@ -155,7 +152,6 @@ void TestYourApp::TestQTime(){
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
 void TestYourApp::cleanup()
@@ -163,6 +159,6 @@ void TestYourApp::cleanup()
     delete window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

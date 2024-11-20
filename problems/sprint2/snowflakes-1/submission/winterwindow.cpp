@@ -30,7 +30,7 @@ void WinterWindow::paintEvent(QPaintEvent *event) {
         .rotation = double(ui->sld_rotation->value())
     };
 
-    // Создайте снежинку (объект класса SnowFlake) и нарисуйте её методом draw.
+    // Создайте снежинку (объект класса SnowFlake) и нарисуйте её методом Draw.
 
     QRect rect(10, 10, width() - 20, height() - 20);
 

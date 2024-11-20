@@ -90,15 +90,12 @@ private:
     QLabel* lbl_q2;
     QLabel* lbl_q3;
     QLabel* lbl_q4;
-    QGuiApplication *app;
 };
 
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 }
 
 void TestYourApp::init()
@@ -246,7 +243,6 @@ void TestYourApp::TestExtremeRatio2()
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
 void TestYourApp::cleanup()
@@ -254,6 +250,6 @@ void TestYourApp::cleanup()
     delete window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

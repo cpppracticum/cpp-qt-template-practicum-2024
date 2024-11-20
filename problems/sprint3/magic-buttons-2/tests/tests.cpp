@@ -43,7 +43,6 @@ private slots:
 
 private:
 
-    QGuiApplication *app;
     Setting* setting;
     QComboBox* cb_action;
     QPushButton* pb_save;
@@ -54,9 +53,7 @@ private:
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 }
 
 
@@ -101,7 +98,6 @@ void TestYourApp::TestCustomDir()
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
 void TestYourApp::cleanup()
@@ -109,6 +105,6 @@ void TestYourApp::cleanup()
     delete setting;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"
