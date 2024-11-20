@@ -87,7 +87,6 @@ private:
     void checkState();
 
 
-    QGuiApplication *app;
     MainWindow* window;
 
     QLineEdit* le_year;
@@ -115,9 +114,7 @@ private:
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 }
 
 void TestYourApp::init()
@@ -301,7 +298,6 @@ void TestYourApp::TestHoroscope()
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
 void TestYourApp::cleanup()
@@ -309,6 +305,6 @@ void TestYourApp::cleanup()
     delete window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

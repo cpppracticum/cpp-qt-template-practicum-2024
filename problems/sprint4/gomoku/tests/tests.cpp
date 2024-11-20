@@ -237,6 +237,6 @@ void TestYourApp::TestTie() {
 }
 
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

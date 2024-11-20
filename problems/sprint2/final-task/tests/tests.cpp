@@ -106,7 +106,6 @@ private:
 
     void checkLabels(const QString& expected_memory, const QString& expected_result, const QString& expected_formula);
 
-    QGuiApplication *app;
     MainWindow* window;
     std::map<std::string, QPushButton*> keyboard;
     std::map<std::string, std::string> operations;
@@ -156,9 +155,7 @@ void TestYourApp::inputNumber(const std::string& number)
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 }
 
 
@@ -319,7 +316,6 @@ void TestYourApp::TestMemory()
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
 
@@ -329,7 +325,7 @@ void TestYourApp::cleanup()
 }
 
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 
 #include "tests.moc"

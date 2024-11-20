@@ -83,7 +83,6 @@ private:
     void CheckValidDate(int day, int month, int year, const QString& month_name);
     void CheckInvalidDate();
 
-    QGuiApplication *app;
     MainWindow* window;
 
     QLineEdit* le_date;
@@ -129,9 +128,7 @@ T* getChild(QObject* parent, const QString& object_name, const QString& type_nam
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 }
 
 void TestYourApp::init()
@@ -312,7 +309,6 @@ void TestYourApp::TestNonExistingDate()
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
 void TestYourApp::cleanup()
@@ -320,6 +316,6 @@ void TestYourApp::cleanup()
     delete window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

@@ -47,7 +47,6 @@ private slots:
 
 private:
     Selector* selector_window;
-    QApplication* app;
     QPushButton* btn_cart;
 
 };
@@ -55,9 +54,7 @@ private:
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 
     selector_window = new Selector();
     QVERIFY2(selector_window != nullptr, "Окно приложения не создано");
@@ -141,6 +138,6 @@ void TestYourApp::cleanupTestCase()
     delete selector_window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

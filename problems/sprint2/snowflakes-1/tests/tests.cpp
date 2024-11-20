@@ -14,8 +14,6 @@
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QSlider>
-#include <string>
-#include <thread>
 #include <cmath>
 
 #include "prac/QPainter"
@@ -34,7 +32,6 @@ void getChild(T*& child, QObject* parent, const QString& object_name, const QStr
                       .arg(parent->objectName());
     } else {
         message = QString("В %2 не найден %1").arg(object_name).arg(parent->objectName());
-        ;
     }
 
     QVERIFY2(child, qPrintable(message));
@@ -69,16 +66,13 @@ private slots:
 private:
     void ValidateSnowflake();
     WinterWindow* window;
-    QApplication* app;
     QSlider* sld_size;
     QSlider* sld_rotation;
     QSlider* sld_line;
 };
 
 void TestYourApp::initTestCase() {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 }
 
 
@@ -87,7 +81,7 @@ void TestYourApp::init() {
     QVERIFY2(window != nullptr, "Окно приложения не создано");
     window->show();
     QVERIFY2(window->isVisible(), "Окно приожения не активируется");
-    app->processEvents(); // Запуск обработки событий в фоновом режиме для тестирования
+    QApplication::instance()->processEvents(); // Запуск обработки событий в фоновом режиме для тестирования
 
     sld_size = getChild<QSlider>(window, "sld_size", "QSlider");
     sld_rotation = getChild<QSlider>(window, "sld_rotation", "QSlider");
@@ -194,13 +188,12 @@ void TestYourApp::TestComplex()
 
 
 void TestYourApp::cleanupTestCase() {
-    delete app;
 }
 
 void TestYourApp::cleanup() {
     delete window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

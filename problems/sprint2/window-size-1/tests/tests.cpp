@@ -69,14 +69,11 @@ private slots:
 private:
     MainWindow* window;
     QLabel* lbl_size;
-    QApplication *app;
 };
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 }
 
 void TestYourApp::init()
@@ -123,7 +120,6 @@ void TestYourApp::TestResize2()
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
 void TestYourApp::cleanup()
@@ -131,6 +127,6 @@ void TestYourApp::cleanup()
     delete window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

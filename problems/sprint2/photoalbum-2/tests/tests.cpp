@@ -67,16 +67,13 @@ private slots:
 private:
     MainWindow* window;
     QLabel* lbl_img;
-    QGuiApplication *app;
     QPixmap* pixmap;
 };
 
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 }
 
 void TestYourApp::init()
@@ -231,7 +228,6 @@ void TestYourApp::TestExtremeRatio2()
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
 void TestYourApp::cleanup()
@@ -239,6 +235,6 @@ void TestYourApp::cleanup()
     delete window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

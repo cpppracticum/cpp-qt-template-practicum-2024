@@ -43,15 +43,12 @@ private:
     MainWindow* window;
     QPushButton *yourButton;
     QLineEdit *textView;
-    QApplication *app;
 };
 
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 
     window = new MainWindow();
 
@@ -76,9 +73,8 @@ void TestYourApp::TestCloseButton()
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"

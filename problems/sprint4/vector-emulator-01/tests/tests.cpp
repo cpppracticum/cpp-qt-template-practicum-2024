@@ -49,7 +49,6 @@ private:
     void clear() const;
 
 
-    QGuiApplication *app;
     MainWindow *window;
 
     QListWidget *list_widget;
@@ -91,9 +90,7 @@ private:
 
 void TestYourApp::initTestCase()
 {
-    int argc = 0;
-    char* argv[] = {};
-    app = new QApplication(argc, argv);
+
 }
 
 
@@ -225,7 +222,6 @@ void TestYourApp::TestMonths() {
 
 void TestYourApp::cleanupTestCase()
 {
-    delete app;
 }
 
 void TestYourApp::cleanup()
@@ -233,6 +229,6 @@ void TestYourApp::cleanup()
     delete window;
 }
 
-QTEST_APPLESS_MAIN(TestYourApp)
+QTEST_MAIN(TestYourApp)
 
 #include "tests.moc"
