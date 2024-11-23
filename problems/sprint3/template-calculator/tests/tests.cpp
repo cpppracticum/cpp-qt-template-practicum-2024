@@ -226,9 +226,6 @@ void TestYourApp::chooseType(const QString& type) const {
 
 void TestYourApp::init()
 {
-    int argc = 0;
-    static const QApplication static_app(argc, {});
-
     window = new MainWindow();
 
     QVERIFY2(window != nullptr, "Окно настроек не создано");
