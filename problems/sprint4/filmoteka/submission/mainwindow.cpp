@@ -49,7 +49,7 @@ QStringList MainWindow::ToString(const QList<Movie> &movies) {
 }
 
 Movie MainWindow::GetMovie() const {
-  return Movie{.name = name,
+  return Movie{.name = ui->le_name->text(),
     .genre = static_cast<Genre>(ui->cb_genre->currentIndex()),
     .rating = ui->dsb_rating->value(),
     .is_watched = ui->chb_is_done->isChecked()};

@@ -13,8 +13,9 @@
   <property name="windowTitle">
    <string>std::vector demo</string>
   </property>
-
+  <widget class="QWidget" name="centralwidget"/>
  </widget>
  <resources/>
  <connections/>
 </ui>
+
