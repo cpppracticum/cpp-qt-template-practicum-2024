@@ -296,7 +296,7 @@ void TestYourApp::TestNonExistingDate()
 
     auto CheckNonExistingDate = [this] (){
         CheckInvalidDate();
-        QVERIFY2(lbl_message->text() == "Такой даты не существует", "В случае несуществующей даты в поле lbl_message должна быть надпись \"Некорректная дата\"");
+        QVERIFY2(lbl_message->text() == "Такой даты не существует", "В случае несуществующей даты в поле lbl_message должна быть надпись \"Такой даты не существует\"");
     };
 
     le_date->setText("30.02.2020");

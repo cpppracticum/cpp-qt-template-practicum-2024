@@ -38,7 +38,7 @@ inline std::vector<int16_t> GenerateSignal(SignalData data) {
 
 inline void ApplyDecayAndAttack(std::vector<int16_t>& signal, 
                                 size_t max_length) {
-    // Примените атаку и затухание сигнала.
+    // Примените затухание и атаку сигнала.
     // Используйте принцип, данный в уроке.
     // Затухание применяется к концу сигнала, а 
     // атака симметрично - к началу.
