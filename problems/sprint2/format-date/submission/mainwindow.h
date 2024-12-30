@@ -19,7 +19,6 @@ private:
     QString GetFormatType1(int day, int month, int year);
     QString GetFormatType2(int day, int month, int year);
     QString GetFormatType3(int day, int month, int year);
-    int CalculateDaysFromStartYear(int day, int month, int year);
 
     QString GetStrNumDays(int num_days, int year);
     void ShowFormattedDate();
