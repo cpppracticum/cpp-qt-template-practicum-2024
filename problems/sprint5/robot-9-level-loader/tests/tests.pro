@@ -46,3 +46,7 @@ HEADERS += \
         $$SUBMISSION_PATH/utility/timer.h \
         $$SUBMISSION_PATH/utility/utility.h \
         $$MOCK_LIB/prac/QTimer
+
+RESOURCES += \
+    $$SUBMISSION_PATH/game.qrc \
+    $$SUBMISSION_PATH/levels.qrc
